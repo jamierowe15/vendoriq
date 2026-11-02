@@ -1,0 +1,40 @@
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2328;
+  background: #f6f8fa;
+}
+
+body { margin: 0; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #d0d7de; margin-bottom: 20px; padding-bottom: 12px;
+}
+header h1 { margin: 0; font-size: 1.6rem; }
+nav a { color: #0969da; text-decoration: none; font-weight: 500; }
+nav a:hover { text-decoration: underline; }
+
+input {
+  display: block; width: 100%; max-width: 420px; box-sizing: border-box;
+  padding: 8px 10px; margin-bottom: 12px;
+  border: 1px solid #d0d7de; border-radius: 6px; font-size: 1rem;
+}
+
+button {
+  padding: 8px 16px; border: none; border-radius: 6px;
+  background: #0969da; color: white; font-size: 1rem; cursor: pointer;
+}
+button:hover { background: #0550ae; }
+
+table { width: 100%; border-collapse: collapse; background: white; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid #d0d7de; }
+th { background: #eaeef2; }
+td a { color: #0969da; text-decoration: none; }
+
+.error { color: #b00020; }
+.risk-high { color: #b00020; font-weight: 600; }
+.risk-medium { color: #9a6700; font-weight: 600; }
+.risk-low { color: #1a7f37; }
+
