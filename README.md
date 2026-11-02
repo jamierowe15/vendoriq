@@ -17,7 +17,7 @@ It's modelled on the tools a bank's sourcing, contracting and third-party risk t
 |---|---|---|
 | Database | SQL Server schema, seed data, joins, audit table | ✅ |
 | REST API | Express CRUD, reports, validation, security middleware | ✅ |
-| React frontend | Vendor list with search, vendor detail, add-vendor form | 🚧 |
+| React frontend | Vendor list with search, vendor detail, add-vendor form | ✅ |
 | SSO & RBAC | Microsoft Entra ID sign-in, app roles, protected API | 🚧 |
 | Azure | App Service, Azure SQL, Key Vault, Managed Identity, App Insights | 🚧 |
 | AI / MCP | MCP server exposing vendor tools to an AI assistant, human approval step | 🚧 |
@@ -32,7 +32,7 @@ It's modelled on the tools a bank's sourcing, contracting and third-party risk t
 - ✅ Vendor detail with all contracts and latest risk assessment, loaded in one database round trip
 - ✅ "Contracts expiring in N days" report, joined with vendor risk level
 - ✅ Soft delete — offboarded vendors are kept for audit, never erased
-- 🚧 React UI with live search, colour-coded risk levels and validated forms
+- ✅ React UI with live search, colour-coded risk levels and validated forms
 
 ### Security
 - ✅ Schema validation on every write (zod) with field-level 400 errors
@@ -154,7 +154,13 @@ CLIENT_ORIGIN=http://localhost:5173
 
 ## Screenshots
 
-_Coming with the React frontend._
+**Vendor list** — live search and colour-coded risk levels
+
+![Vendor list](docs/vendor-list.png)
+
+**Vendor detail** — contracts and latest risk assessment
+
+![Vendor detail](docs/vendor-detail.png)
 
 ---
 
