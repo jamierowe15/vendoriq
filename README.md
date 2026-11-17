@@ -1,4 +1,4 @@
-# VendorIQ â€” AI-assisted third-party risk & contract management
+# VendorIQ AI-assisted third-party risk & contract management
 
 Secure full-stack app for procurement teams: Microsoft Entra ID single sign-on with role-based access,
 a REST API on SQL Server / Azure SQL, sourcing (RFx) bid comparison, and an AI agent that answers
