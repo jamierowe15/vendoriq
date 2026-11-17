@@ -1,10 +1,10 @@
-# VendorIQ — AI-assisted third-party risk & contract management
+# VendorIQ â€” AI-assisted third-party risk & contract management
 
 Secure full-stack app for procurement teams: Microsoft Entra ID single sign-on with role-based access,
 a REST API on SQL Server / Azure SQL, sourcing (RFx) bid comparison, and an AI agent that answers
 questions by calling tools through an MCP server, always with the signed-in user's own permissions.
 
-> **Live demo:** _add your Static Web Apps URL here after deployment_ · **Demo video:** _add link_
+> **Live demo:** https://stvendoriqjr3311.z9.web.core.windows.net (click "Try the demo", no account needed) Â· **Demo video:** _add link_
 
 [![CI/CD](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml)
 
@@ -13,7 +13,7 @@ questions by calling tools through an MCP server, always with the signed-in user
 ```mermaid
 flowchart LR
     U[User] -->|Sign in: OAuth 2.0 + PKCE| E[Microsoft Entra ID]
-    U --> R[React SPA<br/>Static Web Apps]
+    U --> R[React SPA<br/>Azure Storage static website]
     R -->|Bearer access token| A[Express API<br/>App Service]
     A -->|JWT check + RBAC| A
     A --> S[(Azure SQL)]
@@ -35,9 +35,9 @@ validation and role checks before reaching SQL.
 
   | Role | Read | Create / edit / flag vendors | Offboard vendors, award RFx |
   | --- | :---: | :---: | :---: |
-  | `Procurement.Viewer` | ✅ | ❌ | ❌ |
-  | `Procurement.Analyst` | ✅ | ✅ | ❌ |
-  | `Procurement.Admin` | ✅ | ✅ | ✅ |
+  | `Procurement.Viewer` | âœ… | âŒ | âŒ |
+  | `Procurement.Analyst` | âœ… | âœ… | âŒ |
+  | `Procurement.Admin` | âœ… | âœ… | âœ… |
 
 - RFx (sourcing) module: bids ranked by a transparent 60% price / 40% risk score
 - AI assistant: LLM tool calling through a Model Context Protocol (MCP) server with 7 tools
@@ -88,5 +88,5 @@ client/src/      React (Vite) app with MSAL sign-in
 ## Tech stack
 
 React, Vite, Node.js, Express, SQL Server / Azure SQL, Microsoft Entra ID (MSAL), Azure App Service,
-Static Web Apps, Key Vault, Application Insights, Model Context Protocol, OpenAI / Azure OpenAI,
+Azure Storage static website, Key Vault, Application Insights, Model Context Protocol, OpenAI / Azure OpenAI,
 Jest, Supertest, GitHub Actions.
