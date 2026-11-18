@@ -1,10 +1,10 @@
-# VendorIQ â€” AI-assisted third-party risk & contract management
+# VendorIQ — AI-assisted third-party risk & contract management
 
 Secure full-stack app for procurement teams: Microsoft Entra ID single sign-on with role-based access,
 a REST API on SQL Server / Azure SQL, sourcing (RFx) bid comparison, and an AI agent that answers
 questions by calling tools through an MCP server, always with the signed-in user's own permissions.
 
-> **Live demo:** https://stvendoriqjr3311.z9.web.core.windows.net (click "Try the demo", no account needed) Â· **Demo video:** _add link_
+> **Live demo:** https://stvendoriqjr3311.z9.web.core.windows.net (click "Try the demo", no account needed) · **Demo video:** _add link_
 
 [![CI/CD](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml)
 
@@ -35,9 +35,9 @@ validation and role checks before reaching SQL.
 
   | Role | Read | Create / edit / flag vendors | Offboard vendors, award RFx |
   | --- | :---: | :---: | :---: |
-  | `Procurement.Viewer` | âœ… | âŒ | âŒ |
-  | `Procurement.Analyst` | âœ… | âœ… | âŒ |
-  | `Procurement.Admin` | âœ… | âœ… | âœ… |
+  | `Procurement.Viewer` | ✅ | ❌ | ❌ |
+  | `Procurement.Analyst` | ✅ | ✅ | ❌ |
+  | `Procurement.Admin` | ✅ | ✅ | ✅ |
 
 - RFx (sourcing) module: bids ranked by a transparent 60% price / 40% risk score
 - AI assistant: LLM tool calling through a Model Context Protocol (MCP) server with 7 tools
