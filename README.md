@@ -4,7 +4,9 @@ Secure full-stack app for procurement teams: Microsoft Entra ID single sign-on w
 a REST API on SQL Server / Azure SQL, sourcing (RFx) bid comparison, and an AI agent that answers
 questions by calling tools through an MCP server, always with the signed-in user's own permissions.
 
-> **Live demo:** https://stvendoriqjr3311.z9.web.core.windows.net (click "Try the demo", no account needed) · **Demo video:** _add link_
+> **Live demo:** https://stvendoriqjr3311.z9.web.core.windows.net (click "Try the demo", no account needed)
+
+![VendorIQ demo](docs/demo.gif)
 
 [![CI/CD](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml)
 
