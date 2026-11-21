@@ -1,0 +1,71 @@
+name: Record demo GIF
+
+# Run it by hand: GitHub > Actions > Record demo GIF > Run workflow
+# (or from PowerShell: gh workflow run demo-gif.yml)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    name: Record the live site as a GIF
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://stvendoriqjr3311.z9.web.core.windows.net
+      API_URL: https://vendoriq-api-jr3311.azurewebsites.net
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install a hidden browser
+        run: |
+          mkdir -p /tmp/rec && cd /tmp/rec
+          npm init -y > /dev/null
+          npm install playwright@1
+          npx playwright install --with-deps chromium
+
+      - name: Click through the demo and record it
+        run: |
+          cp scripts/record-demo.mjs /tmp/rec/
+          cd /tmp/rec && node record-demo.mjs
+
+      - name: Turn the video into a GIF
+        run: |
+          VIDEO=$(ls /tmp/rec/video/*.webm | head -1)
+          for WIDTH in 960 800 640; do
+            ffmpeg -y -loglevel error -ss 0.5 -i "$VIDEO" \
+              -vf "fps=10,scale=${WIDTH}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=bayer" \
+              -loop 0 docs/demo.gif
+            SIZE=$(stat -c %s docs/demo.gif)
+            echo "Width $WIDTH gives $((SIZE/1024)) KB"
+            [ "$SIZE" -lt 9000000 ] && break
+          done
+
+      - name: Add the GIF to the README
+        run: |
+          python3 - <<'PY'
+          import re, pathlib
+          p = pathlib.Path('README.md')
+          s = p.read_text(encoding='utf-8')
+          s = re.sub(r' · \*\*Demo video:\*\* _add link_', '', s)
+          if 'docs/demo.gif' not in s:
+              lines = s.split('\n')
+              i = next(n for n, l in enumerate(lines) if l.startswith('> **Live demo:**'))
+              lines[i+1:i+1] = ['', '![VendorIQ demo](docs/demo.gif)']
+              s = '\n'.join(lines)
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Save it on a branch called demo-gif
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B demo-gif
+          git add docs/demo.gif README.md
+          git commit -m "Add demo GIF recorded from the live site"
+          git push --force origin demo-gif
