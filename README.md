@@ -6,7 +6,7 @@ questions by calling tools through an MCP server, always with the signed-in user
 
 > **Live demo:** https://stvendoriqjr3311.z9.web.core.windows.net (click "Try the demo", no account needed)
 
-![VendorIQ demo](docs/demo.gif)
+[![VendorIQ demo](docs/demo.gif)](https://stvendoriqjr3311.z9.web.core.windows.net)
 
 [![CI/CD](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/jamierowe15/vendoriq/actions/workflows/ci-cd.yml)
 
