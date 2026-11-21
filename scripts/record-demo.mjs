@@ -30,7 +30,9 @@ const context = await browser.newContext({
 const page = await context.newPage();
 
 await page.goto(SITE, { waitUntil: 'networkidle' });
-await pause(1500);
+// Hold on the front page so viewers see the "Try the demo" button
+await page.getByRole('button', { name: /Try the demo/ }).waitFor();
+await pause(3500);
 
 // 1. Start the read-only demo
 await page.getByRole('button', { name: /Try the demo/ }).click();
