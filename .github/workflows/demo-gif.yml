@@ -69,8 +69,9 @@ jobs:
 
       - name: Save it on a branch called demo-gif
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Credit the commit to the person who started the workflow (you), not the bot
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
           git checkout -B demo-gif
           git add docs/demo.gif README.md
           git commit -m "Add demo GIF recorded from the live site"
