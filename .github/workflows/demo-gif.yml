@@ -28,6 +28,7 @@ jobs:
           npm init -y > /dev/null
           npm install playwright@1
           npx playwright install --with-deps chromium
+          sudo apt-get install -y -qq ffmpeg   # turns the video into a GIF
 
       - name: Click through the demo and record it
         run: |
